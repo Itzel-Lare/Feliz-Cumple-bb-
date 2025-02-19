@@ -3,74 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎉 ¡Feliz Cumpleaños! 🎈</title>
+    <title>Feliz Cumpleaños Mi Amorcito</title>
     <style>
         body {
-            background: linear-gradient(to top, #ff9a9e, #fad0c4);
+            background: linear-gradient(120deg, #ff9a9e, #fad0c4);
+            overflow: hidden;
             text-align: center;
             font-family: 'Arial', sans-serif;
             color: white;
-            overflow: hidden;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
         }
 
         h1 {
             font-size: 3em;
-            margin-bottom: 10px;
-        }
-
-        p {
-            font-size: 1.5em;
-            font-weight: bold;
-        }
-
-        .globo {
-            width: 50px;
-            height: 70px;
-            background: red;
-            border-radius: 50%;
             position: absolute;
-            bottom: -100px;
-            animation: flotar 5s infinite ease-in-out;
-        }
-
-        .globo::after {
-            content: "";
-            width: 2px;
-            height: 50px;
-            background: white;
-            position: absolute;
-            bottom: -50px;
+            top: 20%;
             left: 50%;
-            transform: translateX(-50%);
+            transform: translate(-50%, -50%);
+            animation: floatText 3s infinite alternate;
         }
 
-        @keyframes flotar {
-            0% { transform: translateY(0); opacity: 1; }
-            100% { transform: translateY(-100vh); opacity: 0; }
+        @keyframes floatText {
+            0% { transform: translate(-50%, -50%) translateY(0); }
+            100% { transform: translate(-50%, -50%) translateY(-15px); }
         }
 
-        /* Genera múltiples globos con diferentes colores y velocidades */
-        .globo:nth-child(1) { left: 10%; background: red; animation-duration: 4s; }
-        .globo:nth-child(2) { left: 30%; background: blue; animation-duration: 6s; }
-        .globo:nth-child(3) { left: 50%; background: yellow; animation-duration: 5s; }
-        .globo:nth-child(4) { left: 70%; background: green; animation-duration: 7s; }
-        .globo:nth-child(5) { left: 90%; background: purple; animation-duration: 6.5s; }
+        .collage {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60%;
+        }
+
+        .collage img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+            transform: rotate(calc(-5deg + 10deg * var(--rotate)));
+        }
+
+        .balloon {
+            position: absolute;
+            width: 50px;
+            animation: floatBalloon 5s infinite alternate ease-in-out;
+        }
+
+        @keyframes floatBalloon {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-30px); }
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.7;
+            animation: twinkle 1.5s infinite alternate;
+        }
+
+        @keyframes twinkle {
+            0% { transform: scale(1); opacity: 0.5; }
+            100% { transform: scale(1.5); opacity: 1; }
+        }
     </style>
 </head>
 <body>
-    <h1>🎉 ¡Feliz Cumpleaños! 🎈</h1>
-    <p>Te quiero mucho 💖</p>
+    <h1>Feliz Cumpleaños Mi Amorcito 🎉🎈</h1>
 
-    <!-- Globos flotando -->
-    <div class="globo"></div>
-    <div class="globo"></div>
-    <div class="globo"></div>
-    <div class="globo"></div>
-    <div class="globo"></div>
+    <div class="collage">
+        <img src="https://github.com/Itzel-Lare/Feliz-Cumple-bb-/blob/main/Imagen%20de%20WhatsApp%202025-02-19%20a%20las%2012.55.52_33a6932a.jpg?raw=true" style="--rotate:1;">
+        <img src="https://github.com/Itzel-Lare/Feliz-Cumple-bb-/blob/main/Imagen%20de%20WhatsApp%202025-02-19%20a%20las%2012.55.53_68c661cb.jpg?raw=true" style="--rotate:2;">
+        <img src="https://github.com/Itzel-Lare/Feliz-Cumple-bb-/blob/main/Imagen%20de%20WhatsApp%202025-02-19%20a%20las%2012.55.53_bfd0a8be.jpg?raw=true" style="--rotate:-1;">
+        <img src="https://github.com/Itzel-Lare/Feliz-Cumple-bb-/blob/main/Imagen%20de%20WhatsApp%202025-02-19%20a%20las%2012.55.53_c3cdabc1.jpg?raw=true" style="--rotate:3;">
+        <img src="https://github.com/Itzel-Lare/Feliz-Cumple-bb-/blob/main/Imagen%20de%20WhatsApp%202025-02-19%20a%20las%2012.55.53_e8705a03.jpg?raw=true" style="--rotate:-2;">
+        <img src="https://github.com/Itzel-Lare/Feliz-Cumple-bb-/blob/main/Imagen%20de%20WhatsApp%202025-02-19%20a%20las%2012.55.53_f08813b7.jpg?raw=true" style="--rotate:1;">
+    </div>
+
+    <script>
+        function createBalloon() {
+            let balloon = document.createElement("img");
+            balloon.src = "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Emoji_u1f388.svg/1200px-Emoji_u1f388.svg.png";
+            balloon.className = "balloon";
+            balloon.style.left = Math.random() * 100 + "vw";
+            balloon.style.top = Math.random() * 100 + "vh";
+            document.body.appendChild(balloon);
+        }
+        
+        function createSparkle() {
+            let sparkle = document.createElement("div");
+            sparkle.className = "sparkle";
+            sparkle.style.left = Math.random() * 100 + "vw";
+            sparkle.style.top = Math.random() * 100 + "vh";
+            document.body.appendChild(sparkle);
+        }
+
+        for (let i = 0; i < 15; i++) {
+            createBalloon();
+            createSparkle();
+        }
+    </script>
 </body>
 </html>
+
