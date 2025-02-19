@@ -46,7 +46,13 @@ h2 {
   -webkit-user-select: none;
   user-select: none;
 }
-
+h3 {
+  font-size: 3em;
+  font-weight: 800;
+  margin-top: 20px;
+  -webkit-user-select: none;
+  user-select: none;
+}
 /* Responsividad para pantallas pequeñas */
 @media (max-width: 768px) {
   h1 {
