@@ -47,9 +47,10 @@ h2 {
   user-select: none;
 }
 h3 {
-  font-size: 3em;
-  font-weight: 800;
+  font-size: 2.5em;
+  font-weight: 600;
   margin-top: 20px;
+  color: #F4F5F7;
   -webkit-user-select: none;
   user-select: none;
 }
@@ -62,9 +63,8 @@ h3 {
   h2 {
     font-size: 2.5em;
   }
-}
   h3 {
-    font-size: 2.5em;
+    font-size: 2em;
   }
 }
 
@@ -75,8 +75,7 @@ h3 {
   h2 {
     font-size: 2em;
   }
-}
   h3 {
-    font-size: 2em;
+    font-size: 1.8em;
   }
 }
