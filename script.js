@@ -8,8 +8,9 @@ class Birthday {
   constructor() {
     this.resize()
 
-    // create a lovely place to store the firework
+    // create a lovely place to store the firework and hearts
     this.fireworks = []
+    this.hearts = []
     this.counter = 0
   }
   
@@ -25,19 +26,28 @@ class Birthday {
   }
   
   onClick(evt) {
-     let x = evt.clientX || evt.touches && evt.touches[0].pageX
-     let y = evt.clientY || evt.touches && evt.touches[0].pageY
-      
-     let count = random(3,5)
-     for(let i = 0; i < count; i++) this.fireworks.push(new Firework(
-        random(this.spawnA, this.spawnB),
-        this.height,
-        x,
-        y,
-        random(0, 260),
-        random(30, 110)))
-          
-     this.counter = -1
+    let x = evt.clientX || evt.touches && evt.touches[0].pageX
+    let y = evt.clientY || evt.touches && evt.touches[0].pageY
+    
+    let count = random(3,5)
+    for (let i = 0; i < count; i++) this.fireworks.push(new Firework(
+      random(this.spawnA, this.spawnB),
+      this.height,
+      x,
+      y,
+      random(0, 260),
+      random(30, 110)))
+
+    // Add hearts when clicking
+    let heartCount = random(5, 10)
+    for (let i = 0; i < heartCount; i++) this.hearts.push(new Heart(
+      x,
+      y,
+      random(0, 360),
+      random(1, 3)
+    ))
+
+    this.counter = -1
   }
   
   update(delta) {
@@ -46,7 +56,11 @@ class Birthday {
     ctx.fillRect(0, 0, this.width, this.height)
 
     ctx.globalCompositeOperation = 'lighter'
+    // Update fireworks
     for (let firework of this.fireworks) firework.update(delta)
+
+    // Update hearts
+    for (let heart of this.hearts) heart.update(delta)
 
     // if enough time passed... create new new firework
     this.counter += delta * 3 // each second
@@ -63,6 +77,9 @@ class Birthday {
 
     // remove the dead fireworks
     if (this.fireworks.length > 1000) this.fireworks = this.fireworks.filter(firework => !firework.dead)
+
+    // remove the dead hearts
+    if (this.hearts.length > 500) this.hearts = this.hearts.filter(heart => !heart.dead)
   }
 }
 
@@ -128,6 +145,39 @@ class Firework {
       ctx.fill()
     }
 
+  }
+}
+
+// Heart class for floating hearts
+class Heart {
+  constructor(x, y, angle, size) {
+    this.x = x
+    this.y = y
+    this.angle = angle
+    this.size = size
+    this.dead = false
+    this.speed = random(1, 3)
+    this.alpha = 1
+  }
+
+  update(delta) {
+    this.y -= this.speed // hearts float upwards
+    this.x += Math.sin(this.angle) * 2 // hearts slightly drift horizontally
+
+    // Fading effect
+    this.alpha -= 0.01 * delta
+    if (this.alpha <= 0) this.dead = true
+
+    ctx.globalAlpha = this.alpha
+    ctx.beginPath()
+    ctx.moveTo(this.x, this.y)
+    ctx.bezierCurveTo(this.x - this.size, this.y - this.size, this.x + this.size, this.y - this.size, this.x, this.y)
+    ctx.bezierCurveTo(this.x + this.size, this.y - this.size, this.x + this.size * 2, this.y + this.size, this.x, this.y + this.size * 2)
+    ctx.bezierCurveTo(this.x - this.size * 2, this.y + this.size, this.x - this.size, this.y - this.size, this.x, this.y)
+    ctx.fillStyle = 'rgba(255, 0, 0, 0.7)'
+    ctx.fill()
+
+    ctx.globalAlpha = 1
   }
 }
 
