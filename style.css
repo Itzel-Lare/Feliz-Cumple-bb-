@@ -2,41 +2,36 @@ body {
   margin: 0;
   background: #020202;
   cursor: crosshair;
+  overflow: hidden; /* Para evitar barras de desplazamiento */
 }
-canvas{display:block}
-h1 {
+
+canvas {
+  display: block;
+}
+
+h1, h2, h3 {
   position: absolute;
-  top: 10%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
   color: #F4F5F7;
-  font-family: "Impact,Charcoal,sans-serif";
-  font-size: 5em;
+  font-family: "Impact, Charcoal, sans-serif";
   font-weight: 800;
   -webkit-user-select: none;
   user-select: none;
+  white-space: nowrap; /* Evita que el texto se divida en varias líneas */
 }
+
+h1 {
+  top: 10%;
+  font-size: 8vw; /* Ajusta el tamaño en función del ancho de la ventana */
+}
+
 h2 {
-  position: absolute;
   top: 30%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: #F4F6F7;
-  font-family: "Impact,Charcoal,sans-serif";
-  font-size: 5em;
-  font-weight: 800;
-  -webkit-user-select: none;
-  user-select: none;
+  font-size: 6vw; /* Ajusta el tamaño en función del ancho de la ventana */
 }
+
 h3 {
-  position: absolute;
   top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: #F4F6F7;
-  font-family: "Impact,Charcoal,sans-serif";
-  font-size: 5em;
-  font-weight: 800;
-  -webkit-user-select: none;
-  user-select: none;
+  font-size: 4vw; /* Ajusta el tamaño en función del ancho de la ventana */
 }
