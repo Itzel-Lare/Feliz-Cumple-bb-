@@ -46,14 +46,14 @@ h2 {
   -webkit-user-select: none;
   user-select: none;
 }
-h3 {
+/*h3 {
   font-size: 2.5em;
   font-weight: 600;
   margin-top: 20px;
   color: #F4F5F7;
   -webkit-user-select: none;
   user-select: none;
-}
+}*/
 
 /* Responsividad para pantallas pequeñas */
 @media (max-width: 768px) {
@@ -63,10 +63,10 @@ h3 {
   h2 {
     font-size: 2.5em;
   }
-  h3 {
+/*  h3 {
     font-size: 2em;
   }
-}
+}*/
 
 @media (max-width: 480px) {
   h1 {
@@ -75,7 +75,8 @@ h3 {
   h2 {
     font-size: 2em;
   }
-  h3 {
+/*  h3 {
     font-size: 1.8em;
   }
 }
+*/
